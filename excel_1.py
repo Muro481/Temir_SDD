@@ -2,25 +2,26 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 from PIL import Image
+import os
 
 st.set_page_config(page_title='SDD Təmir normativləri')
 st.header('Təmir materialları 2022-2023')
 st.subheader('Təmir materialların dövriyyəsi')
 
-excel_file = 'C:/Users/User/Desktop/data/SDD/Material.xlsx'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+excel_file = os.path.join(BASE_DIR, 'Material.xlsx')
+image_path = os.path.join(BASE_DIR, 'Train.jpg')
 sheet_name = 'Summary'
+sheet_name_Norms = 'Normativ'
 
-
-        # Şəkil əlavə etmək
-# image = Image.open('C:/Users/User/Desktop/data/SDD/Train.jpg')
-# st.image(image,
-#          caption = "Azərbaycan Dəmir Yolları",
-#         width = 500)
+# Şəkil əlavə etmək
+image = Image.open(image_path)
+st.image(image,
+         caption = "Azərbaycan Dəmir Yolları",
+        width = 500)
 
 # Normativlər sütunu
-excel_file_1 = 'C:/Users/User/Desktop/data/SDD/Material.xlsx'
-sheet_name_Norms = 'Normativ'
-df_Normativ = pd.read_excel(excel_file_1,
+df_Normativ = pd.read_excel(excel_file,
                    sheet_name = sheet_name_Norms,
                    usecols = 'B:K',
                    header = 0)
@@ -71,10 +72,8 @@ st.dataframe(df_vusal)
 
 
 # --- Planlı təmir
-excel_file = 'C:/Users/User/Desktop/data/SDD/Material.xlsx'
-sheet_name_1 = 'Summary'
 df = pd.read_excel(excel_file,
-                   sheet_name = sheet_name_1,
+                   sheet_name = sheet_name,
                    usecols = 'O:P',
                    header = 2)
 
@@ -91,7 +90,7 @@ st.plotly_chart(pie_chart)
 
 #  --- Plandan kənar təmir
 df_plandan_kənar = pd.read_excel(excel_file,
-                                sheet_name=sheet_name_1,
+                                sheet_name=sheet_name,
                                 usecols = 'R:S',
                                 header=2)
 
