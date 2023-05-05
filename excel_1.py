@@ -11,11 +11,11 @@ excel_file = 'C:/Users/User/Desktop/data/SDD/Material.xlsx'
 sheet_name = 'Summary'
 
 
-# Şəkil əlavə etmək
-image = Image.open('C:/Users/User/Desktop/data/SDD/Train.jpg')
-st.image(image,
-         caption = "Azərbaycan Dəmir Yolları",
-        width = 500)
+        # Şəkil əlavə etmək
+# image = Image.open('C:/Users/User/Desktop/data/SDD/Train.jpg')
+# st.image(image,
+#          caption = "Azərbaycan Dəmir Yolları",
+#         width = 500)
 
 # Normativlər sütunu
 excel_file_1 = 'C:/Users/User/Desktop/data/SDD/Material.xlsx'
